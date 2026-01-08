@@ -1,0 +1,20 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/menu_notes"
+            android:title="Catatan"
+            android:icon="@drawable/ic_notes"/>
+
+        <item
+            android:id="@+id/menu_archive"
+            android:title="Arsip Catatan"
+            android:icon="@drawable/ic_archive"/>
+
+        <item
+            android:id="@+id/menu_settings"
+            android:title="Setelan"
+            android:icon="@drawable/ic_settings"/>
+
+    </group>
+</menu>
