@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:background="#FFF9EE">
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,7 +11,6 @@
         android:gravity="center"
         android:padding="24dp">
 
-        <!-- LOGO APP -->
         <ImageView
             android:layout_width="80dp"
             android:layout_height="80dp"
@@ -38,7 +35,13 @@
             android:textColor="#888888"
             android:layout_marginBottom="32dp"/>
 
-        <!-- EMAIL -->
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama Lengkap"
+            android:background="@drawable/bg_input"
+            android:layout_marginBottom="16dp"/>
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -47,7 +50,6 @@
             android:inputType="textEmailAddress"
             android:layout_marginBottom="16dp"/>
 
-        <!-- PASSWORD -->
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -56,20 +58,18 @@
             android:inputType="textPassword"
             android:layout_marginBottom="24dp"/>
 
-        <!-- BUTTON LOGIN -->
-        <com.google.android.material.button.MaterialButton
+        <Button
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:text="Masuk"
-            android:textColor="#000000"
-            app:backgroundTint="#FFD98E"
-            app:cornerRadius="14dp"/>
+            android:text="Daftar"
+            android:background="@drawable/bg_button"
+            android:textColor="#000000"/>
 
         <!-- FOOTER -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Belum punya akun? Daftar"
+            android:text="Sudah punya akun? Masuk"
             android:textColor="#F4A825"
             android:layout_marginTop="32dp"/>
 

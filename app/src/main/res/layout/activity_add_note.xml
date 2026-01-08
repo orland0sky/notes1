@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/noteParentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF9EE">
+
+    <RelativeLayout
+        android:id="@+id/noteHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_back_arrow" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnBack"
+            android:layout_marginTop="8dp"
+            android:text="Catatan"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#000000" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:padding="6dp"
+                android:src="@drawable/ic_undo"
+                android:background="@drawable/bg_down_button_yellow" />
+
+            <ImageView
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="8dp"
+                android:padding="6dp"
+                android:src="@drawable/ic_redo"
+                android:background="@drawable/bg_down_button_yellow" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginStart="8dp"
+                android:text="Selesai"
+                android:paddingHorizontal="12dp"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="12sp"
+                android:background="@drawable/bg_down_button_yellow" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/containerInput"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/noteHeader"
+        android:layout_above="@id/bottomToolbar"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_white_card_rounded">
+
+        <EditText
+            android:id="@+id/etNoteTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Judul"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:background="@null"
+            android:importantForAutofill="no"
+            android:inputType="textCapSentences" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rabu, 7 Januari 2026"
+            android:textSize="12sp"
+            android:textColor="#BDBDBD" />
+
+        <EditText
+            android:id="@+id/etNoteContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:hint="Isi Catatan..."
+            android:gravity="top"
+            android:background="@null"
+            android:importantForAutofill="no"
+            android:inputType="textMultiLine" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottomToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingVertical="12dp"
+        android:padding="8dp">
+
+        <ImageButton
+            android:id="@+id/btnEdit"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_margin="4dp"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            android:background="@drawable/bg_down_button_yellow"
+            android:src="@drawable/ic_edit_palette" />
+
+        <ImageButton
+            android:id="@+id/btnImage"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_margin="4dp"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            android:background="@drawable/bg_down_button_yellow"
+            android:src="@drawable/ic_add_image" />
+
+        <ImageButton
+            android:id="@+id/btnMic"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_margin="4dp"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            android:background="@drawable/bg_down_button_yellow"
+            android:src="@drawable/ic_mic" />
+
+        <ImageButton
+            android:id="@+id/btnChecklist"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_margin="4dp"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            android:background="@drawable/bg_down_button_yellow"
+            android:src="@drawable/ic_checkbox" />
+
+        <ImageButton
+            android:id="@+id/btnPengingat"
+            android:layout_width="60dp"
+            android:layout_height="50dp"
+            android:layout_margin="4dp"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            android:background="@drawable/bg_down_button_yellow"
+            android:src="@drawable/ic_reminder" />
+
+    </LinearLayout>
+</RelativeLayout>

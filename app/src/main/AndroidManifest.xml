@@ -11,20 +11,63 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Project1">
-
+        <activity
+            android:name=".new_label"
+            android:exported="false" />
+        <activity
+            android:name=".image_picker"
+            android:exported="false" />
+        <activity
+            android:name=".edit_tools"
+            android:exported="false" />
+        <activity
+            android:name=".edit_toola"
+            android:exported="false" />
+        <activity
+            android:name=".item_archive"
+            android:exported="false" />
+        <activity
+            android:name=".label"
+            android:exported="false" />
+        <activity
+            android:name=".pengingat"
+            android:exported="false" />
+        <activity
+            android:name=".add_note"
+            android:exported="false" />
+        <activity
+            android:name=".nav_header"
+            android:exported="false" />
+        <activity
+            android:name=".Activity_main"
+            android:exported="false" />
+        <activity
+            android:name=".drawer_menu"
+            android:exported="false" />
+        <activity
+            android:name=".button_sheet_setting"
+            android:exported="false" />
+        <activity
+            android:name=".item_note"
+            android:exported="false" />
+        <activity
+            android:name=".Dashboard"
+            android:exported="false" />
+        <activity
+            android:name=".Register"
+            android:exported="false" />
         <activity
             android:name=".data.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-
     </application>
 
 </manifest>

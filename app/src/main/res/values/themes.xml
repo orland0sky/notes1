@@ -1,9 +1,36 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+
     <style name="Base.Theme.Project1" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <!-- WARNA UTAMA APP -->
+        <item name="colorPrimary">#FFD98E</item>
+        <item name="colorOnPrimary">#000000</item>
+
+        <!-- WARNA SEKUNDER -->
+        <item name="colorSecondary">#FFD98E</item>
+        <item name="colorOnSecondary">#000000</item>
+
+        <!-- OPTIONAL: background umum -->
+        <item name="android:windowBackground">#FFF9EE</item>
+
     </style>
 
-    <style name="Theme.Project1" parent="Base.Theme.Project1" />
+    <resources xmlns:tools="http://schemas.android.com/tools">
+
+        <style name="Theme.MyNotes" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        </style>
+
+        <style name="BottomIconStyle">
+            <item name="android:layout_width">50dp</item>
+            <item name="android:layout_height">50dp</item>
+            <item name="android:layout_margin">4dp</item>
+            <item name="android:padding">12dp</item>
+            <item name="android:background">@drawable/bg_rounded_yellow_small</item>
+            <item name="android:scaleType">fitCenter</item>
+            <item name="android:tint">#000000</item>
+        </style>
+
+    </resources>
+
+    <style name="Theme.Project1" parent="Base.Theme.Project1"/>
 </resources>
