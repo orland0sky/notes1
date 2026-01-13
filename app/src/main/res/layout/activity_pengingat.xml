@@ -1,64 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF9EE">
+    android:background="#FFFFFF">
 
-    <LinearLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/mainContent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:padding="16dp">
-            <ImageView
-                android:id="@+id/btnMenuPengingat"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_menu"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="Pengingat"
-                android:textStyle="bold"
-                android:textSize="20sp"/>
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_alignParentEnd="true"
-                android:src="@drawable/ic_settings"/>
-        </RelativeLayout>
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:elevation="0dp">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_margin="16dp"
-            android:hint="Cari catatan..."
-            android:paddingStart="16dp"
-            android:background="@drawable/bg_input"/>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="#F1F3F4">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingHorizontal="12dp">
+
+                    <ImageView
+                        android:id="@+id/btnBackReminder"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_menu"
+                        app:tint="#5F6368" />
+
+                    <TextView
+                        android:id="@+id/tvHeaderTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="Pengingat"
+                        android:textColor="#5F6368"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvPengingat"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingHorizontal="16dp"/>
-    </LinearLayout>
+            android:paddingHorizontal="8dp"
+            android:clipToPadding="false"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabAddReminder"
+        <!-- Overlay Background saat menu terbuka -->
+        <View
+            android:id="@+id/fabOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#B3FFFFFF"
+            android:visibility="gone"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <!-- Floating Menu Items -->
+        <LinearLayout
+            android:id="@+id/fabMenuContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="100dp"
+            android:orientation="vertical"
+            android:gravity="end"
+            android:visibility="gone">
+
+            <!-- Audio -->
+            <LinearLayout
+                android:id="@+id/menuAudio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_white_card_rounded"
+                android:elevation="4dp"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_mic" app:tint="#000000"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Audio" android:textColor="#000000" android:textStyle="bold" android:layout_marginStart="12dp"/>
+            </LinearLayout>
+
+            <!-- Gambar -->
+            <LinearLayout
+                android:id="@+id/menuGambar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_white_card_rounded"
+                android:elevation="4dp"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_album" app:tint="#000000"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Gambar" android:textColor="#000000" android:textStyle="bold" android:layout_marginStart="12dp"/>
+            </LinearLayout>
+
+            <!-- Daftar -->
+            <LinearLayout
+                android:id="@+id/menuDaftar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_white_card_rounded"
+                android:elevation="4dp"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_checkbox" app:tint="#000000"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Daftar" android:textColor="#000000" android:textStyle="bold" android:layout_marginStart="12dp"/>
+            </LinearLayout>
+
+            <!-- Teks -->
+            <LinearLayout
+                android:id="@+id/menuTeks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_white_card_rounded"
+                android:elevation="4dp"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_notes" app:tint="#000000"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Teks" android:textColor="#000000" android:textStyle="bold" android:layout_marginStart="12dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="24dp"
+            android:src="@drawable/ic_add"
+            app:backgroundTint="#FFFFFF"
+            app:tint="#4285F4"
+            app:elevation="6dp"
+            app:maxImageSize="32dp" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_margin="30dp"
-        android:src="@drawable/ic_add"
-        app:backgroundTint="#FFD98E"
-        app:fabSize="normal"
-        app:tint="#FFFFFF"
-        app:elevation="6dp" />
+        android:layout_height="match_parent"
+        android:layout_gravity="start">
+        <include layout="@layout/activity_drawer_menu"/>
+    </com.google.android.material.navigation.NavigationView>
 
-</RelativeLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

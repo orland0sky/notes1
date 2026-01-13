@@ -4,81 +4,170 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
 
-    <LinearLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/mainContent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#FFF9EE"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:elevation="0dp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_margin="16dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="2dp"
+                app:cardBackgroundColor="#F1F3F4">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingHorizontal="12dp">
+
+                    <ImageView
+                        android:id="@+id/btnMenu"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_menu"
+                        app:tint="#5F6368" />
+
+                    <EditText
+                        android:id="@+id/searchBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_toEndOf="@id/btnMenu"
+                        android:layout_toStartOf="@+id/btnSetting"
+                        android:layout_marginHorizontal="12dp"
+                        android:background="@null"
+                        android:hint="Cari catatan Anda"
+                        android:textColorHint="#5F6368"
+                        android:textSize="16sp"
+                        android:inputType="text"
+                        android:importantForAutofill="no" />
+
+                    <ImageView
+                        android:id="@+id/btnSetting"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_settings"
+                        android:scaleType="centerCrop" />
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNotes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="8dp"
+            android:clipToPadding="false"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+        <View
+            android:id="@+id/fabOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#B3FFFFFF"
+            android:visibility="gone"
+            android:clickable="true"
+            android:focusable="true" />
 
         <LinearLayout
-            android:id="@+id/topBar"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:padding="16dp">
+            android:id="@+id/fabMenuContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="100dp"
+            android:orientation="vertical"
+            android:gravity="end"
+            android:visibility="gone">
 
-            <ImageView
-                android:id="@+id/btnMenu"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_menu"/>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Catatan Saya"
-                android:textAlignment="center"
-                android:textStyle="bold"
-                android:textSize="18sp"/>
-
-            <ImageView
-                android:id="@+id/btnSetting"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_settings"/>
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/searchBar"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_margin="16dp"
-            android:hint="Cari catatan..."
-            android:paddingStart="16dp"
-            android:background="@drawable/bg_input"/>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvNotes"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:padding="8dp"
-                android:clipToPadding="false"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fabAdd"
+            <!-- Gambar -->
+            <LinearLayout
+                android:id="@+id/menuGambar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="30dp"
-                android:src="@drawable/ic_add"
-                app:backgroundTint="#FFD98E"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:tint="#000000" />
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_white_card_rounded"
+                android:elevation="4dp"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_album" app:tint="#000000"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Gambar" android:textColor="#000000" android:textStyle="bold" android:layout_marginStart="12dp"/>
+            </LinearLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- Daftar -->
+            <LinearLayout
+                android:id="@+id/menuDaftar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_white_card_rounded"
+                android:elevation="4dp"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_checkbox" app:tint="#000000"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Daftar" android:textColor="#000000" android:textStyle="bold" android:layout_marginStart="12dp"/>
+            </LinearLayout>
 
-    </LinearLayout>
+            <!-- Teks -->
+            <LinearLayout
+                android:id="@+id/menuTeks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_white_card_rounded"
+                android:elevation="4dp"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp"
+                android:clickable="true"
+                android:focusable="true">
+                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_notes" app:tint="#000000"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Teks" android:textColor="#000000" android:textStyle="bold" android:layout_marginStart="12dp"/>
+            </LinearLayout>
 
-    <include layout="@layout/activity_drawer_menu"/>
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="24dp"
+            android:src="@drawable/ic_add"
+            app:backgroundTint="#FFFFFF"
+            app:tint="#4285F4"
+            app:elevation="6dp"
+            app:maxImageSize="32dp" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start">
+        <include layout="@layout/activity_drawer_menu"/>
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>

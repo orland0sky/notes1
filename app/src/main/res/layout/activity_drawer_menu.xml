@@ -15,7 +15,8 @@
         android:layout_height="24dp"
         android:layout_gravity="end"
         android:layout_marginBottom="10dp"
-        android:src="@drawable/ic_back_arrow" />
+        android:src="@drawable/ic_back_arrow"
+        android:contentDescription="@string/kembali_ke_dashboard" />
 
     <LinearLayout
         android:id="@+id/btnProfile"
@@ -37,8 +38,10 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_profil"
-                android:scaleType="centerCrop"/>
+                android:src="@drawable/ic_profile_default_grey"
+                app:tint="#5F6368"
+                android:scaleType="centerInside"
+                android:contentDescription="Profile" />
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
@@ -47,16 +50,18 @@
             android:orientation="vertical"
             android:layout_marginStart="12dp">
             <TextView
+                android:id="@+id/tvUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nama Pengguna"
+                android:text="Hai, Nama Pengguna"
                 android:textStyle="bold"
                 android:textColor="#000000"
                 android:textSize="16sp"/>
             <TextView
+                android:id="@+id/tvUserEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lihat Profil"
+                android:text="emailuser@gmail.com"
                 android:textSize="12sp"
                 android:textColor="#757575"/>
         </LinearLayout>
@@ -73,13 +78,15 @@
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_notes" />
+            android:src="@drawable/ic_notes"
+            android:contentDescription="@string/catatan" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Catatan"
+            android:text="@string/catatan"
             android:layout_marginStart="16dp"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:textStyle="bold"/>
     </LinearLayout>
 
     <LinearLayout
@@ -93,12 +100,15 @@
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_reminder" />
+            android:src="@drawable/ic_reminder"
+            android:contentDescription="Pengingat" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Pengingat"
-            android:layout_marginStart="16dp" />
+            android:layout_marginStart="16dp"
+            android:textStyle="bold"
+            android:textColor="#000000"/>
     </LinearLayout>
 
     <LinearLayout
@@ -112,12 +122,37 @@
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_arsip" />
+            android:src="@drawable/ic_arsip"
+            android:contentDescription="Arsip" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Arsip"
-            android:layout_marginStart="16dp" />
+            android:layout_marginStart="16dp"
+            android:textStyle="bold"
+            android:textColor="#000000"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/itemTrash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/menu_item_selector"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="12dp">
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_delete_red"
+            android:contentDescription="Sampah" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sampah"
+            android:layout_marginStart="16dp"
+            android:textStyle="bold"
+            android:textColor="#000000"/>
     </LinearLayout>
 
     <View
@@ -137,27 +172,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
         <ImageView
+            android:id="@+id/btnAddLabel"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_add" />
+            android:src="@drawable/ic_add"
+            android:contentDescription="Add Label" />
     </RelativeLayout>
 
-    <LinearLayout
+    <!-- Kontainer Dinamis untuk Label -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLabelsDrawer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
-        android:padding="12dp"
-        android:layout_marginTop="8dp">
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/ic_label" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tugas"
-            android:layout_marginStart="16dp" />
-    </LinearLayout>
+        android:layout_marginTop="8dp" />
 
 </LinearLayout>

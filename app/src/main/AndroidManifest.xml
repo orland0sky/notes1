@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Project1">
 
         <activity
-            android:name=".data.LoginActivity"
+            android:name=".auth.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,8 +22,26 @@
         </activity>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".auth.RegisterActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".main.Dashboard"
+            android:exported="false" />
+
+        <activity
+            android:name=".note.AddNoteActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity android:name=".note.pengingat" android:exported="false" />
+        <activity android:name=".note.trash" android:exported="false" />
+        <activity
+            android:name=".note.item_archive"
+            android:exported="false" />
+        <activity android:name=".note.label" android:exported="false" />
+        <activity android:name=".note.new_label" android:exported="false" />
+        <activity android:name=".note.image_picker" android:exported="false" />
 
     </application>
 

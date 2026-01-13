@@ -1,4 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFF9EE">
@@ -13,23 +15,17 @@
             android:layout_height="56dp"
             android:padding="16dp">
             <ImageView
-                android:id="@+id/btnMenu"
+                android:id="@+id/btnBackTrash"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_menu" />
+                android:src="@drawable/ic_back_arrow" />
             <TextView
-                android:id="@+id/tvHeaderTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:text="Sampah"
                 android:textStyle="bold"
                 android:textSize="20sp" />
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_alignParentEnd="true"
-                android:src="@drawable/ic_settings" />
         </RelativeLayout>
 
         <EditText
@@ -40,16 +36,8 @@
             android:paddingStart="16dp"
             android:background="@drawable/bg_input" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:text="HARI INI"
-            android:textStyle="bold"
-            android:textColor="#757575" />
-
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvNotes"
+            android:id="@+id/rvTrash"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="8dp" />

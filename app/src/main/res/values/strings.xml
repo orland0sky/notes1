@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">project1</string>
+    <string name="kembali_ke_dashboard">Kembali ke Dashboard</string>
+    <string name="catatan">Catatan</string>
+    <string name="selesai">Selesai</string>
+    <string name="judul_catatan">Judul Catatan</string>
+    <string name="minggu_11_januari_2026">Minggu, 11 Januari 2026</string>
+    <string name="mulai_mengetik">Mulai mengetik...</string>
+    <string name="undo">Undo</string>
+    <string name="redo">Redo</string>
+    <string name="tugas">Tugas</string>
+    <string name="cari_catatan">Cari catatan...</string>
+    <string name="pengaturan">Pengaturan</string>
+    <string name="menu">Menu</string>
 </resources>

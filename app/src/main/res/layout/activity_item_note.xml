@@ -7,7 +7,8 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     app:cardCornerRadius="16dp"
-    app:cardElevation="3dp">
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,32 +17,86 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/tvTitle"
+            android:id="@+id/tvItemTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Judul Catatan"
-            android:textSize="18sp"
+            android:textSize="17sp"
             android:textStyle="bold"
             android:textColor="#000000"
-            android:maxLines="1"
-            android:ellipsize="end"/>
+            android:maxLines="2"
+            android:ellipsize="end" />
 
+        <!-- Preview Konten (Teks atau List) -->
         <TextView
-            android:id="@+id/tvContent"
+            android:id="@+id/tvItemContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Isi catatan yang akan muncul sebagai preview..."
-            android:textSize="14sp"
-            android:textColor="#333333"
-            android:maxLines="8"
-            android:ellipsize="end"/>
+            android:text="Isi catatan..."
+            android:textSize="15sp"
+            android:textColor="#212121"
+            android:lineSpacingExtra="2dp"
+            android:maxLines="10"
+            android:ellipsize="end" />
 
-        <ImageView
-            android:id="@+id/btnToggleChecklist"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_checkbox" />
+        <!-- Summary Checklist (Hanya muncul jika tipe checklist) -->
+        <TextView
+            android:id="@+id/tvChecklistSummary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="+ 1 item dicentang"
+            android:textSize="13sp"
+            android:textColor="#757575"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- Info Pengingat -->
+            <LinearLayout
+                android:id="@+id/reminderInfoContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_rounded_yellow_small"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:gravity="center_vertical"
+                android:visibility="gone">
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/ic_reminder"
+                    app:tint="#5F6368" />
+                <TextView
+                    android:id="@+id/tvItemReminderTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="Waktu"
+                    android:textSize="10sp"
+                    android:textColor="#5F6368"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/btnToggleChecklist"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:alpha="0.5"
+                android:src="@drawable/ic_checkbox"
+                android:contentDescription="Check" />
+        </LinearLayout>
 
     </LinearLayout>
 
