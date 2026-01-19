@@ -9,7 +9,7 @@ import com.example.project1.model.User
 import com.example.project1.model.Label
 
 // Versi dinaikkan ke 6 karena penambahan kolom 'type' pada tabel Note untuk fitur checklist
-@Database(entities = [User::class, Note::class, Label::class], version = 6, exportSchema = false)
+@Database(entities = [User::class, Note::class, Label::class], version = 7, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun appDao(): AppDao
 

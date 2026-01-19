@@ -24,6 +24,8 @@ import com.example.project1.model.Label
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.launch
+import android.widget.PopupMenu
+
 
 class label : AppCompatActivity() {
 
@@ -75,6 +77,8 @@ class label : AppCompatActivity() {
         val fabMenuContainer = findViewById<LinearLayout>(R.id.fabMenuContainer)
         val menuTeks = findViewById<LinearLayout>(R.id.menuTeks)
         val menuGambar = findViewById<LinearLayout>(R.id.menuGambar)
+        val menuDaftar = findViewById<LinearLayout>(R.id.menuDaftar)
+
 
         // 3. Setup RecyclerView Utama (Daftar Catatan)
         rvLabelNotes.layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
@@ -107,6 +111,7 @@ class label : AppCompatActivity() {
 
         // 5. Drawer Navigasi Links
         val itemCatatan = navView.findViewById<LinearLayout>(R.id.itemCatatan)
+        val itemPengingat = navView.findViewById<LinearLayout>(R.id.itemPengingat)
         val itemArsip = navView.findViewById<LinearLayout>(R.id.itemArsip)
         val itemTrash = navView.findViewById<LinearLayout>(R.id.itemTrash)
         val btnAddLabel = navView.findViewById<ImageView>(R.id.btnAddLabel)
@@ -117,6 +122,10 @@ class label : AppCompatActivity() {
             startActivity(Intent(this, item_archive::class.java))
             finish()
         }
+        itemPengingat?.setOnClickListener {
+            startActivity(Intent(this, pengingat::class.java))
+            drawerLayout.closeDrawer(GravityCompat.START)
+        }
         itemTrash?.setOnClickListener {
             startActivity(Intent(this, trash::class.java))
             finish()
@@ -125,11 +134,13 @@ class label : AppCompatActivity() {
             startActivity(Intent(this, new_label::class.java))
         }
 
+
         // 6. Logika FAB Menu (+)
         fabAdd.setOnClickListener {
             if (!isFabMenuOpen) showFabMenu(fabAdd, fabOverlay, fabMenuContainer)
             else closeFabMenu(fabAdd, fabOverlay, fabMenuContainer)
         }
+
 
         fabOverlay.setOnClickListener { closeFabMenu(fabAdd, fabOverlay, fabMenuContainer) }
 
@@ -143,6 +154,13 @@ class label : AppCompatActivity() {
         menuGambar.setOnClickListener {
             closeFabMenu(fabAdd, fabOverlay, fabMenuContainer)
             startActivity(Intent(this, image_picker::class.java))
+        }
+
+        menuDaftar.setOnClickListener {
+            closeFabMenu(fabAdd, fabOverlay, fabMenuContainer)
+            val intent = Intent(this, AddNoteActivity::class.java)
+            intent.putExtra("NOTE_TYPE", "checklist")
+            startActivity(intent)
         }
 
         // 7. Fix Nabrak (Window Insets)

@@ -84,23 +84,6 @@
             android:gravity="end"
             android:visibility="gone">
 
-            <!-- Audio -->
-            <LinearLayout
-                android:id="@+id/menuAudio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:background="@drawable/bg_white_card_rounded"
-                android:elevation="4dp"
-                android:gravity="center_vertical"
-                android:paddingHorizontal="16dp"
-                android:paddingVertical="8dp"
-                android:clickable="true"
-                android:focusable="true">
-                <ImageView android:layout_width="20dp" android:layout_height="20dp" android:src="@drawable/ic_mic" app:tint="#000000"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Audio" android:textColor="#000000" android:textStyle="bold" android:layout_marginStart="12dp"/>
-            </LinearLayout>
-
             <!-- Gambar -->
             <LinearLayout
                 android:id="@+id/menuGambar"

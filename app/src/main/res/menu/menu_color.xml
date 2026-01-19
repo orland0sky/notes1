@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/menu_pink" android:title="Pastel Pink" />
+    <item android:id="@+id/menu_blue" android:title="Pastel Blue" />
+    <item android:id="@+id/menu_green" android:title="Pastel Green" />
+    <item android:id="@+id/menu_purple" android:title="Pastel Purple" />
+    <item android:id="@+id/menu_peach" android:title="Pastel Peach" />
+    <item android:id="@+id/menu_mint" android:title="Pastel Mint" />
+    <item android:id="@+id/menu_lavender" android:title="Pastel Lavender" />
+    <item android:id="@+id/menu_sky" android:title="Pastel Sky" />
+    <item android:id="@+id/menu_cream" android:title="Pastel Cream" />
+    <item android:id="@+id/menu_grey" android:title="Pastel Grey" />
+</menu>

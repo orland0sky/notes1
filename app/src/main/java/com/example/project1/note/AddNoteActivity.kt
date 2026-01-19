@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
+import android.net.Uri
 import android.text.Editable
 import android.text.Layout
 import android.text.Spannable
@@ -22,7 +23,9 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.PopupMenu
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
 import androidx.cardview.widget.CardView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -37,7 +40,7 @@ import kotlinx.coroutines.launch
 import java.util.*
 
 class AddNoteActivity : AppCompatActivity() {
-    
+
     private var existingNote: Note? = null
     private val undoStack = Stack<String>()
     private val redoStack = Stack<String>()
@@ -54,28 +57,41 @@ class AddNoteActivity : AppCompatActivity() {
     private lateinit var checklistContainer: LinearLayout
     private lateinit var rvChecklist: RecyclerView
     private lateinit var checklistAdapter: ChecklistAdapter
-    
+
     private lateinit var checkedItemsContainer: LinearLayout
     private lateinit var tvCheckedCount: TextView
     private lateinit var rvCheckedItems: RecyclerView
     private lateinit var checkedListAdapter: ChecklistAdapter
     private var isCheckedExpanded = true
+    private var selectedImageUri: String? = null
+    private lateinit var imgNotePhoto: ImageView
+    private var noteId: Long = -1L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_note)
 
+        imgNotePhoto = findViewById(R.id.imgNotePhoto)
+
+        val uriString = intent.getStringExtra("EXTRA_IMAGE_URI")
+        if (!uriString.isNullOrEmpty()) {
+            selectedImageUri = uriString
+            imgNotePhoto.visibility = View.VISIBLE
+            imgNotePhoto.setImageURI(Uri.parse(uriString))
+        }
+
+
         noteParentLayout = findViewById<RelativeLayout>(R.id.noteParentLayout)
         cardInputContainer = findViewById<CardView>(R.id.cardInputContainer)
         val bottomToolbar = findViewById<LinearLayout>(R.id.bottomToolbar)
         val database = AppDatabase.getDatabase(this)
-        
+
         etNoteTitle = findViewById<EditText>(R.id.etNoteTitle)
         etNoteContent = findViewById<EditText>(R.id.etNoteContent)
         checklistContainer = findViewById<LinearLayout>(R.id.checklistContainer)
         rvChecklist = findViewById<RecyclerView>(R.id.rvChecklist)
         val btnAddChecklistItem = findViewById<LinearLayout>(R.id.btnAddChecklistItem)
-        
+
         checkedItemsContainer = findViewById<LinearLayout>(R.id.checkedItemsContainer)
         tvCheckedCount = findViewById<TextView>(R.id.tvCheckedCount)
         rvCheckedItems = findViewById<RecyclerView>(R.id.rvCheckedItems)
@@ -131,7 +147,7 @@ class AddNoteActivity : AppCompatActivity() {
         if (existingNote != null) {
             noteType = existingNote?.type ?: "text"
             etNoteTitle.setText(existingNote?.title)
-            
+
             if (noteType == "checklist") {
                 etNoteContent.visibility = View.GONE
                 checklistContainer.visibility = View.VISIBLE
@@ -158,7 +174,7 @@ class AddNoteActivity : AppCompatActivity() {
                     etNoteContent.setText(fullData)
                 }
             }
-            
+
             selectedColor = existingNote?.color ?: -1
             if (selectedColor != -1) {
                 noteParentLayout.setBackgroundColor(selectedColor)
@@ -210,7 +226,7 @@ class AddNoteActivity : AppCompatActivity() {
                 val spans = spannable.getSpans(start, end, UnderlineSpan::class.java)
                 if (spans.isNotEmpty()) for (s in spans) spannable.removeSpan(s)
                 else spannable.setSpan(UnderlineSpan(), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-                
+
                 val state = spannable.toString() + "|||" + serializeSpans(spannable)
                 undoStack.push(state)
                 redoStack.clear()
@@ -225,7 +241,7 @@ class AddNoteActivity : AppCompatActivity() {
                 spannable.getSpans(start, end, AbsoluteSizeSpan::class.java).forEach { spannable.removeSpan(it) }
                 spannable.setSpan(AbsoluteSizeSpan(24, true), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 spannable.setSpan(StyleSpan(Typeface.BOLD), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-                
+
                 val state = spannable.toString() + "|||" + serializeSpans(spannable)
                 undoStack.push(state)
                 redoStack.clear()
@@ -240,7 +256,7 @@ class AddNoteActivity : AppCompatActivity() {
                 spannable.getSpans(start, end, AbsoluteSizeSpan::class.java).forEach { spannable.removeSpan(it) }
                 spannable.setSpan(AbsoluteSizeSpan(18, true), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
                 spannable.setSpan(StyleSpan(Typeface.BOLD), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-                
+
                 val state = spannable.toString() + "|||" + serializeSpans(spannable)
                 undoStack.push(state)
                 redoStack.clear()
@@ -260,7 +276,29 @@ class AddNoteActivity : AppCompatActivity() {
         findViewById<View>(R.id.colorRed).setOnClickListener { updateBg("#FFCDD2") }
         findViewById<View>(R.id.colorBlue).setOnClickListener { updateBg("#BBDEFB") }
         findViewById<View>(R.id.colorGreen).setOnClickListener { updateBg("#C8E6C9") }
-        findViewById<ImageView>(R.id.btnColorWheel).setOnClickListener { updateBg("#F8BBD0") }
+        findViewById<View>(R.id.colorPich).setOnClickListener { updateBg("#FBCCCC") }
+        findViewById<ImageView>(R.id.btnColorWheel).setOnClickListener { view ->
+            val popupMenu = PopupMenu(this, view)
+            popupMenu.menuInflater.inflate(R.menu.menu_color, popupMenu.menu)
+
+            popupMenu.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    R.id.menu_pink -> updateBg("#F8BBD0")
+                    R.id.menu_blue -> updateBg("#BBDEFB")
+                    R.id.menu_green -> updateBg("#C8E6C9")
+                    R.id.menu_purple -> updateBg("#E1BEE7")
+                    R.id.menu_peach -> updateBg("#FFE0B2")
+                    R.id.menu_mint -> updateBg("#B2DFDB")
+                    R.id.menu_lavender -> updateBg("#D1C4E9")
+                    R.id.menu_sky -> updateBg("#E3F2FD")
+                    R.id.menu_cream -> updateBg("#FFF9C4")
+                    R.id.menu_grey -> updateBg("#ECEFF1")
+                }
+                true
+            }
+
+            popupMenu.show()
+        }
 
         // Reminder Logic
         btnSetReminder.setOnClickListener {

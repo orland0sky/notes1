@@ -56,4 +56,8 @@ interface AppDao {
 
     @Delete
     suspend fun deleteLabel(label: Label)
+
+    @Query("SELECT * FROM notes WHERE id = :id LIMIT 1")
+    suspend fun getNoteById(id: Int): Note?
+
 }

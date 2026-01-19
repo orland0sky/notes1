@@ -41,20 +41,26 @@ android {
 }
 
 dependencies {
-    // Menggunakan library dari libs.versions.toml
+    // Core
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
 
-    // Library Room untuk Database (SQLite Lokal)
-    val room_version = "2.6.1"
-    implementation("androidx.room:room-runtime:$room_version")
-    implementation("androidx.room:room-ktx:$room_version")
-    // KSP inilah yang memproses database kamu saat aplikasi di-build
-    ksp("androidx.room:room-compiler:$room_version")
+    // ROOM (Database)
+    val roomVersion = "2.6.1"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
+    ksp("androidx.room:room-compiler:$roomVersion")
 
+    // Coroutine (wajib untuk Room)
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
+    // Lifecycle (lifecycleScope)
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
+
+    // Testing
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

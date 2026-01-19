@@ -120,6 +120,18 @@
                 android:textSize="12sp"
                 android:textColor="#9E9E9E" />
 
+            <!-- ================= IMAGE CATATAN ================= -->
+            <ImageView
+                android:id="@+id/imgNotePhoto"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_marginTop="12dp"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                android:background="#F5F5F5"
+                android:contentDescription="Gambar catatan" />
+            <!-- ================================================= -->
+
             <!-- Container Catatan Teks -->
             <EditText
                 android:id="@+id/etNoteContent"

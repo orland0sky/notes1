@@ -9,58 +9,6 @@
     android:elevation="8dp"
     android:padding="12dp">
 
-    <TextView
-        android:id="@+id/menuTema"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tema"
-        android:textSize="20sp"
-        android:padding="12dp"
-        android:textColor="#000000"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:id="@+id/menuBerbagi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Berbagi"
-        android:textSize="20sp"
-        android:padding="12dp"
-        android:textColor="#000000"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:id="@+id/menuMasukan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Masukan"
-        android:textSize="20sp"
-        android:padding="12dp"
-        android:textColor="#000000"
-        android:textStyle="bold"/>
-
-    <RelativeLayout
-        android:id="@+id/menuUrutkan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Urutkan:"
-            android:textSize="20sp"
-            android:textColor="#000000"
-            android:textStyle="bold"/>
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_arrow_down" />
-    </RelativeLayout>
-
     <LinearLayout
         android:id="@+id/menuKeluar"
         android:layout_width="match_parent"

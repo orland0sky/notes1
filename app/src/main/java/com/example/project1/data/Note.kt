@@ -15,5 +15,6 @@ data class Note(
     val color: Int = -1,
     val label: String? = null,
     val type: String = "text",
-    val reminderTime: Long? = null // Kolom baru untuk waktu pengingat
+    val reminderTime: Long? = null, // Kolom baru untuk waktu pengingat
+    val imageUri: String? = null
 ) : Serializable

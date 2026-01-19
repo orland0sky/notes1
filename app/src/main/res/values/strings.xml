@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">project1</string>
+    <string name="app_name">MyNotes</string>
     <string name="kembali_ke_dashboard">Kembali ke Dashboard</string>
     <string name="catatan">Catatan</string>
     <string name="selesai">Selesai</string>

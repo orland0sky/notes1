@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/bg_white_card_rounded"
@@ -38,8 +39,9 @@
         
         <View android:id="@+id/colorRed" android:layout_width="24dp" android:layout_height="24dp" android:layout_margin="8dp" android:background="@drawable/ic_red" />
         <View android:id="@+id/colorBlue" android:layout_width="24dp" android:layout_height="24dp" android:layout_margin="8dp" android:background="@drawable/ic_blue"/>
-        <View android:id="@+id/colorGreen" android:layout_width="24dp" android:layout_height="24dp" android:layout_margin="8dp" android:background="@drawable/bg_note_green"/>
-        
+        <View android:id="@+id/colorGreen" android:layout_width="24dp" android:layout_height="24dp" android:layout_margin="8dp" android:background="@drawable/ic_green"/>
+        <View android:id="@+id/colorPich" android:layout_width="24dp" android:layout_height="24dp" android:layout_margin="8dp" android:background="@drawable/ic_pich"/>
+
         <ImageView android:id="@+id/btnColorWheel" android:layout_width="28dp" android:layout_height="28dp" android:layout_margin="4dp" android:src="@drawable/ic_color_wheel" android:clickable="true" android:focusable="true"/>
 
     </LinearLayout>
